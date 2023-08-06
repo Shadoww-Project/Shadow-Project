@@ -30,7 +30,7 @@ const CardFour = () => {
           <h4 className="text-title-md font-bold text-black dark:text-white">
             3.456
           </h4>
-          <span className="text-sm font-medium">Total Users</span>
+          <span className="text-sm font-medium">إجمالي المستخدمين</span>
         </div>
       </div>
     </div>

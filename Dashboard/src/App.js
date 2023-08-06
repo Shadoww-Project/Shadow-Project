@@ -4,7 +4,7 @@ import Index from './Dashboard/Index'
 function App() {
   return (
     <>
-    <Index />
+      <Index />
     </>
   );
 }

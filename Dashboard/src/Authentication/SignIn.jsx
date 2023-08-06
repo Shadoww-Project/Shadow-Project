@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   return (
@@ -264,7 +263,7 @@ const SignIn = () => {
 
                 <div className="mt-6 text-center">
                   <p>
-                    Don’t have any account?{' '}
+                    Don’t have any account?{" "}
                     <Link to="/auth/signup" className="text-primary">
                       Sign Up
                     </Link>

@@ -1,15 +1,15 @@
-import { Suspense, lazy, useEffect, useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Suspense, lazy, useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
-import Home from './pages/Home';
-import SignIn from '../Authentication/SignIn';
-import SignUp from '../Authentication/SignUp';
-import Loader from '../common/Loader';
-import Users from './pages/Users';
-import Cities from './pages/Cities';
+import Home from "./pages/Home";
+import SignIn from "../Authentication/SignIn";
+import SignUp from "../Authentication/SignUp";
+import Loader from "../common/Loader";
+import Users from "./pages/Users";
+import Cities from "./pages/Cities";
 
-const Profile = lazy(() => import('./pages/Profile'));
-const DefaultLayout = lazy(() => import('./layout/DefaultLayout'));
+const Profile = lazy(() => import("./pages/Profile"));
+const DefaultLayout = lazy(() => import("./layout/DefaultLayout"));
 
 function Index() {
   const [loading, setLoading] = useState(true);
@@ -23,10 +23,10 @@ function Index() {
   ) : (
     <BrowserRouter>
       <Routes>
-        <Route path="/auth/signin" element={<SignIn />} />
-        <Route path="/auth/signup" element={<SignUp />} />
+        {/* <Route index element={<Home />} /> */}
+        <Route path="/" element={<Navigate to="home" />} />
         <Route element={<DefaultLayout />}>
-          <Route index element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route
             path="/users"
             element={
