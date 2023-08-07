@@ -1,0 +1,50 @@
+.main__top {
+    min-height: 245px;
+    border-radius: 0px 0px 15px 15px;
+}
+
+.main__top .h_name {
+    padding-top: 33px;
+    padding-left: 30px;
+    text-align: left;
+    font: normal normal 300 24px/35px Poppins;
+    letter-spacing: 0px;
+    color: #ffffff93;
+
+}
+
+.main__top .span_name {
+    color: #ffffff;
+}
+
+.main__top .top_p {
+    color: #ffffff93;
+    padding-left: 30px;
+
+}
+
+.top__icon {
+    margin-top: 49px;
+    margin-right: 80px;
+}
+
+.icon_user {
+    height: 30px;
+    width: 30px;
+    color: var(--primary-color);
+    background-color: rgba(104, 198, 197, 25%);
+    padding: 4px;
+    border-radius: 50%;
+}
+
+.icon_user1 {
+    height: 30px;
+    width: 30px;
+    color: white;
+}
+
+.line {
+    height: 30px;
+    width: 2px;
+    background-color: rgba(104, 198, 197, 25%);
+}

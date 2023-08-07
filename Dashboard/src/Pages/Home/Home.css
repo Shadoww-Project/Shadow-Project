@@ -1,0 +1,9 @@
+.main_container {
+    /* margin-top: -100px; */
+    min-height: 546px;
+    background: #000;
+    border-radius: 15px;
+    padding: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
