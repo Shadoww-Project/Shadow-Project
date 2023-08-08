@@ -1,0 +1,28 @@
+.single__card {
+    width: 216px;
+    height: 130px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 6px 30px #E3E8E8;
+    border-radius: 10px;
+}
+
+.icons_card {
+    border-radius: 50%;
+    color: white;
+    box-shadow: 0 0 0 2px rgba(104, 198, 197, 0.2);
+}
+
+.card__content {
+    width: 100%;
+}
+
+.flex-start {
+    display: flex;
+    align-items: flex-start;
+}
