@@ -25,10 +25,9 @@ const handleNewUser = async (req, res) => {
     childCondition,
     createdByAdmin,
   } = req.body;
-  // Convert email to lowercase
+
   email = email.toLowerCase();
 
-  // Check for duplicate emails in the db
   const duplicateEmail = await user.findOne({ email: email });
   const duplicateEmail1 = await specialist.findOne({ email: email });
   if (duplicateEmail || duplicateEmail1) {
@@ -140,45 +139,36 @@ const handleNewSpecialist = async (req, res) => {
     res.status(500).send("Error registering user");
   }
 };
-const createOrUpdateAdmin = async (req, res) => {
+
+const handleNewAdmin = async (req, res) => {
   let { fullName, email, phone, password, role } = req.body;
 
   email = email.toLowerCase();
+
+  const duplicateEmail = await admin.findOne({ email: email });
+
+  if (duplicateEmail) {
+    return res.status(409).send({ error: "Email already exists" });
+  }
 
   const saltRounds = 10;
   const salt = await bcrypt.genSalt(saltRounds);
   const hashedPassword = await bcrypt.hash(password, salt);
 
   try {
-    let existingAdmin = await admin.findOne({}); // Check if any admin document exists
+    const newAdmin = new admin({
+      fullName,
+      email,
+      phone,
+      hashedPassword,
+      role,
+    });
 
-    if (!existingAdmin) {
-      // No admin document exists, create a new one
-      const newAdmin = new admin({
-        fullName,
-        email,
-        phone,
-        hashedPassword,
-        role,
-      });
-
-      await newAdmin.save();
-      const token = jwtGenerator(newAdmin);
-      res.status(200).json({ token });
-    } else {
-      // Admin document exists, update the existing admin's information
-      existingAdmin.fullName = fullName;
-      existingAdmin.email = email;
-      existingAdmin.phone = phone;
-      existingAdmin.hashedPassword = hashedPassword;
-
-      await existingAdmin.save();
-      const token = jwtGenerator(existingAdmin);
-      res.status(200).json({ token });
-    }
+    await newAdmin.save();
+    res.status(200).send("New admin created");
   } catch (error) {
     console.error(error);
     res.status(500).send("Error creating/updating admin");
   }
 };
-module.exports = { handleNewUser, handleNewSpecialist, createOrUpdateAdmin };
+module.exports = { handleNewUser, handleNewSpecialist, handleNewAdmin };

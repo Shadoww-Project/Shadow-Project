@@ -25,6 +25,7 @@ mongoose
   });
 app.use("/register", require("./routes/register"));
 app.use("/authentication", require("./routes/auth"));
-app.use("/users", require("./routes/user"));
-
+app.use("/admin", require("./routes/admin"));
+app.use("/user", require("./routes/user"));
+app.use("/specialist", require("./routes/specialist"));
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

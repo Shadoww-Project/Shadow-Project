@@ -1,58 +1,93 @@
 import React, { useState } from "react";
 import Carousel from "../Components/Carousel";
 import Logo from "../assets/images/Logo.png";
+import ParentStepOne from "../Components/Signup/ParentStepOne";
+import ParentStepTwo from "../Components/Signup/ParentStepTwo";
+
 export default function Signup() {
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState("parent");
+  const [step, setStep] = useState(1);
 
   return (
     <>
       <div className=" flex">
         <div className=" w-5/12 ">
-          <div className=" flex justify-center items-center flex-col h-screen">
-            <img src={Logo} width={45} height={68} />
-            <div className=" w-96">
-              <h1 className=" text-center mb-20 mt-5">إنشاء حساب جديد</h1>
-              <form>
-                <div className=" flex justify-between">
-                  <div
-                    className=" cursor-pointer"
-                    onClick={() => {
-                      setRole("specialist");
-                    }}
+          <div className=" flex justify-center items-center flex-col h-screen ">
+            <img src={Logo} width={45} height={68} alt="img" />
+            {step === 1 ? (
+              <h1 className=" text-center mb-10 mt-5 text-2xl">
+                إنشاء حساب جديد
+              </h1>
+            ) : (
+              <h1 className=" text-center mb-10 mt-5 text-2xl">
+                تسجيل بيانات الطفل{" "}
+              </h1>
+            )}{" "}
+            {step === 1 && (
+              <div className=" text-gray-400 flex justify-between items-center border rounded-lg  mb-3 shadow h-14  p-1 pt-2 pb-2">
+                <div
+                  className=" cursor-pointer flex justify-center items-center  h-12 w-52  hover:bg-buttonHover hover:rounded-lg "
+                  onClick={() => {
+                    setRole("specialist");
+                  }}
+                >
+                  <h1 className=" leading-10 mr-2">حساب أخصائي</h1>
+                  <svg
+                    id="noun-doctor-2831429"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="28"
+                    viewBox="0 0 33.107 36"
                   >
-                    حساب أخصائي
-                  </div>
-                  <div
-                    className=" cursor-pointer"
-                    onClick={() => {
-                      setRole("parent");
-                    }}
+                    <path
+                      id="Path_310156"
+                      data-name="Path 310156"
+                      d="M6,32.5v5.333a.76.76,0,0,0,.828.667H38.346a.744.744,0,0,0,.761-.667V32.5a8.75,8.75,0,0,0-4.569-7.347,12.329,12.329,0,0,0-3.41-1.333.847.847,0,0,0-.364-.08h0a14.428,14.428,0,0,0-3.029-.36H17.306a14.428,14.428,0,0,0-3.029.36h0a.847.847,0,0,0-.364.08,12.329,12.329,0,0,0-3.41,1.333A8.722,8.722,0,0,0,6,32.5Zm16.554-5.587L19.044,24.66h7.019ZM11.5,26.22a10.212,10.212,0,0,1,1.953-.88v1.493a1.319,1.319,0,0,0-.811,1.107,1.521,1.521,0,0,0,1.655,1.333,1.521,1.521,0,0,0,1.655-1.333,1.319,1.319,0,0,0-.811-1.107V24.9a11.64,11.64,0,0,1,1.374-.187l5.248,3.373v2.667a.847.847,0,0,0,1.655,0V28.087l5.248-3.373a11.641,11.641,0,0,1,1.374.187v3.027a3.225,3.225,0,0,0-2.9,2.92v2.52a.847.847,0,0,0,1.655,0v-2.52a1.9,1.9,0,0,1,2.069-1.667,1.9,1.9,0,0,1,2.069,1.667v2.52a.847.847,0,0,0,1.655,0v-2.52a3.225,3.225,0,0,0-2.9-2.92V25.34c3.55,1.22,5.828,4.052,5.761,7.16v4.667h-14.1V33.353a.847.847,0,0,0-1.655,0v3.813H7.655V32.5a7.442,7.442,0,0,1,3.84-6.28Zm11.058-4.28c5.418-.007,9.807-3.543,9.816-7.907V10.407c0-4.367-4.395-7.907-9.816-7.907s-9.816,3.54-9.816,7.907v3.627c.009,4.364,4.4,7.9,9.816,7.907Zm0-18.107c4.265.006,7.8,2.666,8.095,6.093a12.063,12.063,0,0,0-2.4-.2,12.681,12.681,0,0,0-3.443.613,11.946,11.946,0,0,1-2.632.52,10.038,10.038,0,0,1-3.228-.32,4.715,4.715,0,0,0,.3-1.573.847.847,0,0,0-1.655-.027,3.706,3.706,0,0,1-1.49,2.667,4.652,4.652,0,0,1-1.771.813V10.407A6.01,6.01,0,0,1,16.74,5.74a9.275,9.275,0,0,1,5.813-1.906Zm-8.161,10a6.944,6.944,0,0,0,2.913-1.213,5.427,5.427,0,0,0,.91-.893,12.746,12.746,0,0,0,3.311.48h.761a13.124,13.124,0,0,0,3.062-.6,10.25,10.25,0,0,1,2.947-.533,9.787,9.787,0,0,1,2.4.24v2.733c0,3.63-3.654,6.573-8.161,6.573s-8.161-2.943-8.161-6.573Z"
+                      transform="translate(-6 -2.5)"
+                      fill="#c2c6c6"
+                    />
+                  </svg>
+                </div>
+                <div
+                  className=" cursor-pointer flex justify-center items-center  h-12 w-52 hover:bg-buttonHover  hover:rounded-lg p-3"
+                  onClick={() => {
+                    setRole("parent");
+                  }}
+                >
+                  <h1 className=" leading-10 mr-2">حساب ولي الامر</h1>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="28"
+                    viewBox="0 0 24.472 36.442"
                   >
-                    حساب ولي الامر
-                  </div>
+                    <g
+                      id="noun-family-4020792"
+                      transform="translate(-151.383 -96.854)"
+                    >
+                      <path
+                        id="Path_310157"
+                        data-name="Path 310157"
+                        d="M174.538,116.785a11.048,11.048,0,0,0-8.016-6.575,6.863,6.863,0,0,0,3.928-7.731,7.014,7.014,0,0,0-13.664,0,6.863,6.863,0,0,0,3.928,7.731,11.043,11.043,0,0,0-8.018,6.575,11.481,11.481,0,0,0-.076,9.549,12.66,12.66,0,0,0,7.977,6.587,2.833,2.833,0,0,0,3.034-.859,2.743,2.743,0,0,0,2.158.991,2.943,2.943,0,0,0,.875-.133,12.618,12.618,0,0,0,7.953-6.57A11.52,11.52,0,0,0,174.538,116.785Zm-16.9-12.828a5.978,5.978,0,1,1,5.978,5.89A5.934,5.934,0,0,1,157.64,103.957Zm5.99,25.407a2.615,2.615,0,0,0-1.15-.787l-.345-.121c-2.772-.967-5.451-2.12-5.147-4.616a.525.525,0,0,0,0-.06,3.652,3.652,0,0,1,3.679-3.625h2.57a3.5,3.5,0,0,0,.754,0h2.564a3.652,3.652,0,0,1,3.679,3.625.548.548,0,0,0,.009.1c.274,2.476-2.387,3.625-5.137,4.584l-.329.113A2.615,2.615,0,0,0,163.63,129.364Zm-2.542-12.68a2.528,2.528,0,1,1,2.834,2.469h-.615A2.505,2.505,0,0,1,161.089,116.684Zm12.6,9.255a11.643,11.643,0,0,1-7.335,6.026,1.72,1.72,0,0,1-2.04-.7l-.044-.088a1.013,1.013,0,0,1-.04-.868,1.454,1.454,0,0,1,.89-.787l.325-.113c2.174-.761,6.218-2.175,5.8-5.67a4.667,4.667,0,0,0-4.695-4.582h-.439a3.455,3.455,0,0,0,0-4.939,3.58,3.58,0,0,0-5.013,0,3.455,3.455,0,0,0,0,4.939h-.44a4.666,4.666,0,0,0-4.694,4.6c-.4,3.479,3.644,4.891,5.819,5.651l.345.12a1.454,1.454,0,0,1,.89.787,1.02,1.02,0,0,1-.04.868l-.045.088a1.716,1.716,0,0,1-2.039.7,11.641,11.641,0,0,1-7.357-6.048,10.5,10.5,0,0,1,.083-8.734,10.258,10.258,0,0,1,9.945-6.249h.085a10.413,10.413,0,0,1,9.945,6.249A10.555,10.555,0,0,1,173.691,125.94Z"
+                        transform="translate(0 0)"
+                        fill="#68c6c5"
+                        stroke="#68c6c5"
+                        strokeWidth="0.4"
+                      />
+                    </g>
+                  </svg>
                 </div>
-                <br />
-                <br />
-                <h4 className=" text-end"> بيانات ولي الامر</h4>
-                <br />
-                <br />
-
-                <label className=" flex flex-col items-end">
-                  اسم ولي الامر
-                  <input type="text" placeholder="ادخل الاسم الثلاثي" />
-                </label>
-                <div className=" flex">
-                  <label className=" flex flex-col">
-                    البريد الالكتروني
-                    <input type="email" placeholder="ادخل بريد الكتروني فعال" />
-                  </label>
-                  <label className=" flex flex-col">
-                    {" "}
-                    رقم الجوال
-                    <input type="tel" placeholder="ادخل رقم جوال فعال" />
-                  </label>
-                </div>
-              </form>
+              </div>
+            )}
+            {step === 1 && role === "parent" ? (
+              <ParentStepOne setStep={setStep} />
+            ) : (
+              <ParentStepTwo setStep={setStep} />
+            )}
+            <br />
+            <div className=" text-center">
+              لديك حساب؟
+              <span className=" text-primary"> سجل الدخول لحسابك</span>
             </div>
           </div>
         </div>

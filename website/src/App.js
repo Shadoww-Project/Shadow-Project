@@ -4,7 +4,6 @@ import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import NotFound from "./Pages/NotFound";
 import HomePage from "./Pages/Homepage";
-
 function App() {
   const ScrollToTop = () => {
     const { pathname } = useLocation();
